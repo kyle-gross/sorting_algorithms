@@ -2,16 +2,16 @@
 /**
  * insertion_sort_list - sorts  a doubly linked list of integers
  * using the Insertion Sort algorithm
- * 
+ *
  * @list: the list to sort
- * 
+ *
  * Return: void
  */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current = *list, *next = NULL;
 
-	if (!list)
+	if (!*list)
 		return;
 	while (current && current->next)
 	{
