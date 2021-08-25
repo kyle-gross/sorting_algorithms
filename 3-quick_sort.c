@@ -1,15 +1,15 @@
 #include "sort.h"
 /**
  * swap - swaps two integers within an array
- * @xp: x position
- * @yp: y position
+ * @a: x position
+ * @b: y position
  * Return: void
  */
-void swap(int* a, int* b) 
-{ 
-    int t = *a; 
-    *a = *b; 
-    *b = t; 
+void swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
 }
 /**
  * partition - Lomuto partition scheme
@@ -42,6 +42,7 @@ int partition(int *arr, int lo, int hi)
  * @arr: array to sort
  * @lo: loweset index
  * @hi: highest index
+ * @size: size of array, used for printing
  * Return: void
  */
 void quicksort(int *arr, int lo, int hi, int size)
@@ -52,8 +53,8 @@ void quicksort(int *arr, int lo, int hi, int size)
 		{
 			int p = partition(arr, lo, hi);
 
-			print_array(arr, size);
 			quicksort(arr, lo, p - 1, size);
+			print_array(arr, size);
 			quicksort(arr, p + 1, hi, size);
 		}
 	}
