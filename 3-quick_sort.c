@@ -16,9 +16,10 @@ void swap(int *a, int *b)
  * @arr: array
  * @lo: lowest index
  * @hi: highest index
+ * @size: size of original arr
  * Return: index
  */
-int partition(int *arr, int lo, int hi)
+int partition(int *arr, int lo, int hi, size_t size)
 {
 	int pivot = arr[hi];
 	int i = lo - 1;
@@ -28,12 +29,17 @@ int partition(int *arr, int lo, int hi)
 	{
 		if (arr[j] <= pivot)
 		{
-			if (i != j)
 			i++;
-			swap(&arr[i], &arr[j]);
+			if (i != j)
+			{
+				swap(&arr[i], &arr[j]);			
+				print_array(arr, size);
+			}
 		}
 	}
 	swap(&arr[i + 1], &arr[hi]);
+	if ((i + 1) != hi)
+		print_array(arr, size);
 
 	return (i + 1);
 }
@@ -42,19 +48,18 @@ int partition(int *arr, int lo, int hi)
  * @arr: array to sort
  * @lo: loweset index
  * @hi: highest index
- * @size: size of array, used for printing
+ * @size: size of original arr
  * Return: void
  */
-void quicksort(int *arr, int lo, int hi, int size)
+void quicksort(int *arr, int lo, int hi, size_t size)
 {
 	if (lo >= 0 && hi >= 0)
 	{
 		if (lo < hi)
 		{
-			int p = partition(arr, lo, hi);
+			int p = partition(arr, lo, hi, size);
 
 			quicksort(arr, lo, p - 1, size);
-			print_array(arr, size);
 			quicksort(arr, p + 1, hi, size);
 		}
 	}
